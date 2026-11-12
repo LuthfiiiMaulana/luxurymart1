@@ -51,7 +51,8 @@ sudo git clone [https://github.com/LuthfiiiMaulana/luxurymart1.git](https://gith
 ```
 Windows:
 
-```git clone [https://github.com/LuthfiiiMaulana/luxurymart1.git](https://github.com/LuthfiiiMaulana/luxurymart1.git)
+```bash
+git clone [https://github.com/LuthfiiiMaulana/luxurymart1.git](https://github.com/LuthfiiiMaulana/luxurymart1.git)
 After cloning, open the luxurymart1 folder and double-click index.html to launch the website in your browser.
 ```
 ## 📬 Contact
