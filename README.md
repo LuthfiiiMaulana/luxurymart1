@@ -47,14 +47,15 @@ To run **Luxury Mart** locally, run this command on your git bash or terminal:
 Linux and macOS:
 
 ```bash
-sudo git clone [https://github.com/LuthfiiiMaulana/luxurymart1.git](https://github.com/LuthfiiiMaulana/luxurymart1.git)
-```
+sudo git clone https://github.com/LuthfiiiMaulana/luxurymart1.git
+
 Windows:
 
 ```bash
-git clone [https://github.com/LuthfiiiMaulana/luxurymart1.git](https://github.com/LuthfiiiMaulana/luxurymart1.git)
-After cloning, open the luxurymart1 folder and double-click index.html to launch the website in your browser.
+git clone https://github.com/LuthfiiiMaulana/luxurymart1.git
+
 ```
+After cloning, open the `luxurymart1` folder and double-click `index.html` to launch the website in your browser.
 ## 📬 Contact
 If you want to contact me, you can reach me on GitHub.
 
