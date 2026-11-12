@@ -1,5 +1,5 @@
 /* ============================================
-   LUXMART — E-Commerce Premium
+ //  LUXMART — E-Commerce Premium
    JavaScript Application
    ============================================ */
 
