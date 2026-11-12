@@ -48,14 +48,14 @@ Linux and macOS:
 
 ```bash
 sudo git clone [https://github.com/LuthfiiiMaulana/luxurymart1.git](https://github.com/LuthfiiiMaulana/luxurymart1.git)
+```
 Windows:
 
-git clone [https://github.com/LuthfiiiMaulana/luxurymart1.git](https://github.com/LuthfiiiMaulana/luxurymart1.git)
+```git clone [https://github.com/LuthfiiiMaulana/luxurymart1.git](https://github.com/LuthfiiiMaulana/luxurymart1.git)
 After cloning, open the luxurymart1 folder and double-click index.html to launch the website in your browser.
-
-📬 Contact
+```
+## 📬 Contact
 If you want to contact me, you can reach me on GitHub.
 
-📄 License
+## 📄 License
 This project is free to use and does not contain any license.
-
