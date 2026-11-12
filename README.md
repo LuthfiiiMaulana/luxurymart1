@@ -48,7 +48,7 @@ Linux and macOS:
 
 ```bash
 sudo git clone https://github.com/LuthfiiiMaulana/luxurymart1.git
-
+```
 Windows:
 
 ```bash
