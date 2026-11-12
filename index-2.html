@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUXMART — Premium Shopping</title>
+  <link rel="stylesheet" href="style-2.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- ========== SPLASH SCREEN ========== -->
+<div id="splash">
+  <div class="splash-logo">
+    <svg class="logo-icon-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.15)"/>
+      <path d="M10 28 L20 10 L30 28 Z" fill="white" opacity="0.9"/>
+      <circle cx="20" cy="20" r="5" fill="rgba(255,255,255,0.4)"/>
+      <path d="M14 32 Q20 26 26 32" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span class="logo-lux">LUX</span><span class="logo-mart">MART</span>
+  </div>
+  <div class="splash-tagline">Premium Shopping Experience</div>
+  <div class="splash-loader"><span></span><span></span><span></span></div>
+</div>
+
+<!-- ========== AUTH PAGE ========== -->
+<div id="auth-page" class="page hidden">
+  <div class="auth-bg">
+    <div class="auth-bg-pattern"></div>
+    <div class="auth-orb auth-orb1"></div>
+    <div class="auth-orb auth-orb2"></div>
+  </div>
+  <div class="auth-container">
+    <div class="auth-brand">
+      <div class="auth-logo">
+        <svg class="logo-icon-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="19" fill="#7b0000" opacity="0.12"/>
+          <path d="M10 30 L20 10 L30 30 Z" fill="#b71c1c" opacity="0.85"/>
+          <circle cx="20" cy="21" r="5" fill="#7b0000" opacity="0.5"/>
+          <path d="M13 34 Q20 28 27 34" stroke="#b71c1c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-lux">LUX</span><span class="logo-mart">MART</span>
+      </div>
+      <p class="auth-brand-sub">Belanja Mewah, Harga Terjangkau</p>
+    </div>
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Masuk</button>
+        <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Daftar</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div id="form-login" class="auth-form">
+        <h2 class="form-title">Selamat Datang Kembali</h2>
+        <p class="form-sub">Masuk untuk melanjutkan belanja</p>
+        <div class="input-group">
+          <i class="fa fa-envelope"></i>
+          <input type="email" id="login-email" placeholder="Email" />
+        </div>
+        <div class="input-group">
+          <i class="fa fa-lock"></i>
+          <input type="password" id="login-pass" placeholder="Password" />
+          <i class="fa fa-eye toggle-pass" onclick="togglePass('login-pass')"></i>
+        </div>
+        <a href="#" class="forgot-link">Lupa Password?</a>
+        <button class="btn-auth" onclick="doLogin()">Masuk <i class="fa fa-arrow-right"></i></button>
+        <div class="auth-divider"><span>atau</span></div>
+        <div class="social-login">
+          <button class="btn-social"><i class="fab fa-google"></i> Google</button>
+          <button class="btn-social"><i class="fab fa-facebook-f"></i> Facebook</button>
+        </div>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div id="form-register" class="auth-form hidden">
+        <h2 class="form-title">Buat Akun Baru</h2>
+        <p class="form-sub">Bergabung & nikmati belanja premium</p>
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input type="text" id="reg-name" placeholder="Nama Lengkap" />
+        </div>
+        <div class="input-group">
+          <i class="fa fa-envelope"></i>
+          <input type="email" id="reg-email" placeholder="Email" />
+        </div>
+        <div class="input-group">
+          <i class="fa fa-phone"></i>
+          <input type="text" id="reg-phone" placeholder="No. Telepon" />
+        </div>
+        <div class="input-group">
+          <i class="fa fa-lock"></i>
+          <input type="password" id="reg-pass" placeholder="Password" />
+          <i class="fa fa-eye toggle-pass" onclick="togglePass('reg-pass')"></i>
+        </div>
+        <button class="btn-auth" onclick="doRegister()">Daftar Sekarang <i class="fa fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MAIN PAGE ========== -->
+<div id="main-page" class="page hidden">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <svg class="logo-icon-svg" style="width:26px;height:26px;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="19" fill="#fdf0ef"/>
+          <path d="M10 30 L20 10 L30 30 Z" fill="#b71c1c" opacity="0.9"/>
+          <circle cx="20" cy="21" r="4.5" fill="#7b0000" opacity="0.6"/>
+          <path d="M13 34 Q20 28 27 34" stroke="#b71c1c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-lux">LUX</span><span class="logo-mart">MART</span>
+      </div>
+      <div class="nav-search">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Cari produk, merek, kategori..." onkeyup="searchProducts()" />
+          <button class="search-btn"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" onclick="toggleWishlist()"><i class="fa fa-heart"></i><span class="badge" id="wishlist-badge">0</span></button>
+        <button class="nav-icon-btn" onclick="openCart()"><i class="fa fa-shopping-bag"></i><span class="badge" id="cart-badge">0</span></button>
+        <div class="nav-user" onclick="toggleUserMenu()">
+          <div class="user-avatar" id="user-avatar">A</div>
+          <span id="user-name-nav">User</span>
+          <i class="fa fa-chevron-down"></i>
+        </div>
+        <div class="user-dropdown" id="user-dropdown">
+          <a href="#" onclick="showOrders()"><i class="fa fa-box"></i> Pesanan Saya</a>
+          <a href="#" onclick="showTrack()"><i class="fa fa-map-marker-alt"></i> Lacak Pesanan</a>
+          <a href="#" onclick="doLogout()"><i class="fa fa-sign-out-alt"></i> Keluar</a>
+        </div>
+      </div>
+    </div>
+    <!-- CATEGORY NAV -->
+    <div class="cat-nav">
+      <button class="cat-btn active" onclick="filterCat('all')"><i class="fa fa-th"></i> Semua</button>
+      <button class="cat-btn" onclick="filterCat('fashion')"><i class="fa fa-tshirt"></i> Fashion</button>
+      <button class="cat-btn" onclick="filterCat('elektronik')"><i class="fa fa-mobile-alt"></i> Elektronik</button>
+      <button class="cat-btn" onclick="filterCat('kecantikan')"><i class="fa fa-spa"></i> Kecantikan</button>
+      <button class="cat-btn" onclick="filterCat('sport')"><i class="fa fa-running"></i> Sport</button>
+      <button class="cat-btn" onclick="filterCat('rumah')"><i class="fa fa-home"></i> Rumah & Living</button>
+      <button class="cat-btn" onclick="filterCat('makanan')"><i class="fa fa-utensils"></i> Makanan</button>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <section class="hero-section">
+    <div class="hero-slider" id="hero-slider">
+      <div class="hero-slide active" style="--hbg:#c0392b;">
+        <div class="hero-content">
+          <div class="hero-badge">🔥 Flash Sale</div>
+          <h1>Style Premium<br/><span>Harga Spesial</span></h1>
+          <p>Diskon hingga 70% untuk koleksi fashion terbaru</p>
+          <button class="btn-hero" onclick="filterCat('fashion')">Belanja Sekarang <i class="fa fa-arrow-right"></i></button>
+        </div>
+        <div class="hero-img-wrap"><div class="hero-img-circle"><i class="fa fa-tshirt" style="font-size:6rem;color:rgba(255,255,255,0.3)"></i></div></div>
+      </div>
+      <div class="hero-slide" style="--hbg:#922b21;">
+        <div class="hero-content">
+          <div class="hero-badge">⚡ Promo</div>
+          <h1>Gadget Terkini<br/><span>Teknologi Masa Depan</span></h1>
+          <p>Temukan elektronik terbaik dengan garansi resmi</p>
+          <button class="btn-hero" onclick="filterCat('elektronik')">Lihat Koleksi <i class="fa fa-arrow-right"></i></button>
+        </div>
+        <div class="hero-img-wrap"><div class="hero-img-circle"><i class="fa fa-laptop" style="font-size:6rem;color:rgba(255,255,255,0.3)"></i></div></div>
+      </div>
+      <div class="hero-slide" style="--hbg:#a93226;">
+        <div class="hero-content">
+          <div class="hero-badge">✨ New Arrival</div>
+          <h1>Kecantikan<br/><span>Premium Beauty</span></h1>
+          <p>Produk skincare dan makeup dari brand ternama dunia</p>
+          <button class="btn-hero" onclick="filterCat('kecantikan')">Explore <i class="fa fa-arrow-right"></i></button>
+        </div>
+        <div class="hero-img-wrap"><div class="hero-img-circle"><i class="fa fa-magic" style="font-size:6rem;color:rgba(255,255,255,0.3)"></i></div></div>
+      </div>
+    </div>
+    <div class="hero-dots" id="hero-dots">
+      <span class="dot active" onclick="goSlide(0)"></span>
+      <span class="dot" onclick="goSlide(1)"></span>
+      <span class="dot" onclick="goSlide(2)"></span>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item"><i class="fa fa-shipping-fast"></i><div><strong>Gratis Ongkir</strong><small>Min. pembelian Rp 50rb</small></div></div>
+    <div class="stat-item"><i class="fa fa-shield-alt"></i><div><strong>Belanja Aman</strong><small>Garansi uang kembali</small></div></div>
+    <div class="stat-item"><i class="fa fa-undo"></i><div><strong>Retur Mudah</strong><small>30 hari pengembalian</small></div></div>
+    <div class="stat-item"><i class="fa fa-headset"></i><div><strong>CS 24/7</strong><small>Siap membantu Anda</small></div></div>
+  </div>
+
+  <!-- PROMO CARDS -->
+  <section class="promo-section">
+    <div class="promo-grid">
+      <div class="promo-card big" onclick="filterCat('fashion')">
+        <div class="promo-card-inner">
+          <span class="promo-badge">SALE 70%</span>
+          <i class="fa fa-tshirt promo-icon"></i>
+          <h3>Fashion Week</h3>
+          <p>Koleksi terbaru 2025</p>
+        </div>
+      </div>
+      <div class="promo-card" onclick="filterCat('elektronik')">
+        <span class="promo-badge">BARU</span>
+        <i class="fa fa-mobile-alt promo-icon"></i>
+        <h3>Gadget</h3>
+        <p>Teknologi terkini</p>
+      </div>
+      <div class="promo-card" onclick="filterCat('kecantikan')">
+        <span class="promo-badge">HOT</span>
+        <i class="fa fa-spa promo-icon"></i>
+        <h3>Beauty</h3>
+        <p>Skincare & Makeup</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLASH SALE TIMER -->
+  <section class="flash-section">
+    <div class="flash-header">
+      <div class="flash-title"><i class="fa fa-bolt"></i> Flash Sale</div>
+      <div class="flash-timer">
+        Berakhir dalam: <span id="countdown" class="countdown-wrap">00:00:00</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="products-section">
+    <div class="section-header">
+      <h2 class="section-title" id="section-title">Produk Pilihan</h2>
+      <div class="sort-wrap">
+        <select id="sort-select" onchange="sortProducts()">
+          <option value="default">Urutkan</option>
+          <option value="price-asc">Harga Termurah</option>
+          <option value="price-desc">Harga Termahal</option>
+          <option value="rating">Rating Tertinggi</option>
+        </select>
+      </div>
+    </div>
+    <div class="product-grid" id="product-grid"></div>
+    <div id="no-results" class="no-results hidden">
+      <i class="fa fa-search"></i>
+      <p>Produk tidak ditemukan</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg class="logo-icon-svg" style="width:28px;height:28px;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="19" fill="rgba(255,255,255,0.1)"/>
+            <path d="M10 30 L20 10 L30 30 Z" fill="white" opacity="0.85"/>
+            <circle cx="20" cy="21" r="4.5" fill="rgba(255,255,255,0.4)"/>
+            <path d="M13 34 Q20 28 27 34" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span class="logo-lux">LUX</span><span class="logo-mart">MART</span>
+        </div>
+        <p>Platform belanja premium dengan pengalaman belanja yang tak tertandingi.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Layanan</h4>
+        <a href="#">Pusat Bantuan</a>
+        <a href="#">Cara Belanja</a>
+        <a href="#">Pembayaran</a>
+        <a href="#">Pengiriman</a>
+      </div>
+      <div class="footer-col">
+        <h4>Tentang</h4>
+        <a href="#">Tentang Kami</a>
+        <a href="#">Karir</a>
+        <a href="#">Blog</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-col">
+        <h4>Download App</h4>
+        <div class="app-btn"><i class="fab fa-apple"></i> App Store</div>
+        <div class="app-btn"><i class="fab fa-google-play"></i> Play Store</div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 LUXMART. Hak Cipta Dilindungi.</div>
+  </footer>
+</div>
+
+<!-- ========== CART SIDEBAR ========== -->
+<div id="cart-overlay" class="overlay hidden" onclick="closeCart()"></div>
+<div id="cart-sidebar" class="sidebar hidden">
+  <div class="sidebar-header">
+    <h3><i class="fa fa-shopping-bag"></i> Keranjang Belanja</h3>
+    <button onclick="closeCart()"><i class="fa fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total:</span>
+      <strong id="cart-total">Rp 0</strong>
+    </div>
+    <button class="btn-checkout" onclick="goCheckout()">Lanjut ke Checkout <i class="fa fa-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ========== CHECKOUT PAGE ========== -->
+<div id="checkout-page" class="page hidden">
+  <div class="checkout-header">
+    <button class="back-btn" onclick="showMain()"><i class="fa fa-arrow-left"></i> Kembali</button>
+    <div class="auth-logo">
+      <svg class="logo-icon-svg" style="width:24px;height:24px;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" fill="#fdf0ef"/>
+        <path d="M10 30 L20 10 L30 30 Z" fill="#b71c1c" opacity="0.9"/>
+        <circle cx="20" cy="21" r="4.5" fill="#7b0000" opacity="0.6"/>
+        <path d="M13 34 Q20 28 27 34" stroke="#b71c1c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-lux">LUX</span><span class="logo-mart">MART</span>
+    </div>
+    <div class="checkout-steps">
+      <div class="step active" id="step1"><span>1</span> Alamat</div>
+      <div class="step-line"></div>
+      <div class="step" id="step2"><span>2</span> Pembayaran</div>
+      <div class="step-line"></div>
+      <div class="step" id="step3"><span>3</span> Selesai</div>
+    </div>
+  </div>
+  <div class="checkout-body">
+    <!-- STEP 1: ADDRESS -->
+    <div id="checkout-step1" class="checkout-step">
+      <div class="checkout-main">
+        <div class="checkout-card">
+          <h3 class="checkout-card-title"><i class="fa fa-map-marker-alt"></i> Alamat Pengiriman</h3>
+          <div class="form-row">
+            <div class="input-group">
+              <i class="fa fa-user"></i>
+              <input type="text" id="c-name" placeholder="Nama Penerima" />
+            </div>
+            <div class="input-group">
+              <i class="fa fa-phone"></i>
+              <input type="text" id="c-phone" placeholder="No. Telepon" />
+            </div>
+          </div>
+          <div class="input-group">
+            <i class="fa fa-map-marker-alt"></i>
+            <input type="text" id="c-address" placeholder="Alamat Lengkap (Jl., No., RT/RW)" />
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <i class="fa fa-city"></i>
+              <input type="text" id="c-city" placeholder="Kota" />
+            </div>
+            <div class="input-group">
+              <i class="fa fa-map"></i>
+              <input type="text" id="c-prov" placeholder="Provinsi" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <i class="fa fa-mail-bulk"></i>
+              <input type="text" id="c-zip" placeholder="Kode Pos" />
+            </div>
+            <div class="input-group">
+              <i class="fa fa-globe"></i>
+              <select id="c-country">
+                <option value="">Negara</option>
+                <option selected>Indonesia</option>
+                <option>Malaysia</option>
+                <option>Singapore</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group">
+            <i class="fa fa-sticky-note"></i>
+            <input type="text" id="c-note" placeholder="Catatan untuk kurir (opsional)" />
+          </div>
+        </div>
+        <div class="checkout-card">
+          <h3 class="checkout-card-title"><i class="fa fa-truck"></i> Pilih Pengiriman</h3>
+          <div class="shipping-options">
+            <label class="shipping-opt">
+              <input type="radio" name="shipping" value="reg" checked />
+              <div class="shipping-info"><strong>Reguler</strong><small>3-5 hari kerja</small></div>
+              <span class="shipping-price">Rp 15.000</span>
+            </label>
+            <label class="shipping-opt">
+              <input type="radio" name="shipping" value="exp" />
+              <div class="shipping-info"><strong>Express</strong><small>1-2 hari kerja</small></div>
+              <span class="shipping-price">Rp 30.000</span>
+            </label>
+            <label class="shipping-opt">
+              <input type="radio" name="shipping" value="same" />
+              <div class="shipping-info"><strong>Same Day</strong><small>Hari ini</small></div>
+              <span class="shipping-price">Rp 50.000</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="checkout-summary">
+        <div class="checkout-card">
+          <h3 class="checkout-card-title">Ringkasan Pesanan</h3>
+          <div id="order-summary-items"></div>
+          <div class="summary-divider"></div>
+          <div class="summary-row"><span>Subtotal</span><strong id="sum-sub">Rp 0</strong></div>
+          <div class="summary-row"><span>Ongkos Kirim</span><strong id="sum-ship">Rp 15.000</strong></div>
+          <div class="summary-row"><span>Diskon</span><strong class="discount-val" id="sum-disc">- Rp 0</strong></div>
+          <div class="summary-divider"></div>
+          <div class="summary-row total-row"><span>Total</span><strong id="sum-total">Rp 0</strong></div>
+          <div class="input-group voucher-group">
+            <i class="fa fa-tag"></i>
+            <input type="text" id="voucher-input" placeholder="Kode Voucher" />
+            <button class="voucher-btn" onclick="applyVoucher()">Pakai</button>
+          </div>
+          <button class="btn-checkout-next" onclick="goToPayment()">Lanjut ke Pembayaran <i class="fa fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: PAYMENT -->
+    <div id="checkout-step2" class="checkout-step hidden">
+      <div class="checkout-main">
+        <div class="checkout-card">
+          <h3 class="checkout-card-title"><i class="fa fa-credit-card"></i> Metode Pembayaran</h3>
+          <div class="payment-methods">
+            <div class="pay-group">
+              <div class="pay-group-title">Transfer Bank</div>
+              <label class="pay-opt"><input type="radio" name="payment" value="bca" checked /><div class="pay-icon bca">BCA</div><span>Bank BCA</span></label>
+              <label class="pay-opt"><input type="radio" name="payment" value="bni" /><div class="pay-icon bni">BNI</div><span>Bank BNI</span></label>
+              <label class="pay-opt"><input type="radio" name="payment" value="mandiri" /><div class="pay-icon mdr">MDR</div><span>Bank Mandiri</span></label>
+            </div>
+            <div class="pay-group">
+              <div class="pay-group-title">Dompet Digital</div>
+              <label class="pay-opt"><input type="radio" name="payment" value="gopay" /><div class="pay-icon gp">GP</div><span>GoPay</span></label>
+              <label class="pay-opt"><input type="radio" name="payment" value="ovo" /><div class="pay-icon ovo">OVO</div><span>OVO</span></label>
+              <label class="pay-opt"><input type="radio" name="payment" value="dana" /><div class="pay-icon dana">DANA</div><span>DANA</span></label>
+            </div>
+            <div class="pay-group">
+              <div class="pay-group-title">Kartu Kredit / Debit</div>
+              <label class="pay-opt"><input type="radio" name="payment" value="cc" /><div class="pay-icon cc"><i class="fab fa-cc-visa"></i></div><span>Visa / Mastercard</span></label>
+            </div>
+            <div class="pay-group">
+              <div class="pay-group-title">Bayar di Tempat</div>
+              <label class="pay-opt"><input type="radio" name="payment" value="cod" /><div class="pay-icon cod"><i class="fa fa-money-bill-wave"></i></div><span>COD (Cash On Delivery)</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkout-summary">
+        <div class="checkout-card">
+          <h3 class="checkout-card-title">Ringkasan Pesanan</h3>
+          <div id="order-summary-items2"></div>
+          <div class="summary-divider"></div>
+          <div class="summary-row"><span>Subtotal</span><strong id="sum-sub2">Rp 0</strong></div>
+          <div class="summary-row"><span>Ongkos Kirim</span><strong id="sum-ship2">Rp 15.000</strong></div>
+          <div class="summary-row total-row"><span>Total Bayar</span><strong id="sum-total2">Rp 0</strong></div>
+          <button class="btn-checkout-next" onclick="doPay()">Bayar Sekarang <i class="fa fa-lock"></i></button>
+          <p class="secure-note"><i class="fa fa-shield-alt"></i> Pembayaran aman & terenkripsi</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3: SUCCESS -->
+    <div id="checkout-step3" class="checkout-step hidden">
+      <div class="success-wrap">
+        <div class="success-anim">
+          <div class="success-circle"><i class="fa fa-check"></i></div>
+        </div>
+        <h2>Pembayaran Berhasil! 🎉</h2>
+        <p>Pesanan Anda telah dikonfirmasi dan sedang diproses</p>
+        <div class="order-id-box">
+          <span>No. Pesanan:</span>
+          <strong id="order-id-display">#LXM2025001</strong>
+        </div>
+        <div class="success-info">
+          <div class="sinfo-item"><i class="fa fa-truck"></i><div><strong>Estimasi Tiba</strong><small>3-5 Hari Kerja</small></div></div>
+          <div class="sinfo-item"><i class="fa fa-envelope"></i><div><strong>Konfirmasi dikirim</strong><small>ke email Anda</small></div></div>
+        </div>
+        <div class="success-btns">
+          <button class="btn-track" onclick="showTrack()"><i class="fa fa-map-marker-alt"></i> Lacak Pesanan</button>
+          <button class="btn-back-home" onclick="showMain()"><i class="fa fa-home"></i> Kembali Belanja</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TRACK PAGE ========== -->
+<div id="track-page" class="page hidden">
+  <div class="checkout-header">
+    <button class="back-btn" onclick="showMain()"><i class="fa fa-arrow-left"></i> Kembali</button>
+    <div class="auth-logo">
+      <svg class="logo-icon-svg" style="width:24px;height:24px;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" fill="#fdf0ef"/>
+        <path d="M10 30 L20 10 L30 30 Z" fill="#b71c1c" opacity="0.9"/>
+        <circle cx="20" cy="21" r="4.5" fill="#7b0000" opacity="0.6"/>
+        <path d="M13 34 Q20 28 27 34" stroke="#b71c1c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-lux">LUX</span><span class="logo-mart">MART</span>
+    </div>
+    <div></div>
+  </div>
+  <div class="track-body">
+    <div class="track-card">
+      <div class="track-icon-big"><i class="fa fa-map-marker-alt"></i></div>
+      <h2>Lacak Pesanan</h2>
+      <p>Masukkan nomor pesanan Anda</p>
+      <div class="track-input-wrap">
+        <input type="text" id="track-input" placeholder="Contoh: #LXM2025001" />
+        <button onclick="doTrack()">Lacak <i class="fa fa-search"></i></button>
+      </div>
+      <div id="track-result" class="track-result hidden"></div>
+      <div class="track-notif">
+        <div class="notif-box">
+          <i class="fa fa-bell"></i>
+          <div>
+            <strong>Fitur Notifikasi</strong>
+            <p>Fitur notifikasi pelacakan real-time saat ini belum tersedia. Kami sedang mengembangkan fitur ini untuk pengalaman belanja yang lebih baik.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div id="product-modal-overlay" class="overlay hidden" onclick="closeProductModal()"></div>
+<div id="product-modal" class="product-modal hidden">
+  <button class="modal-close" onclick="closeProductModal()"><i class="fa fa-times"></i></button>
+  <div class="modal-inner" id="modal-inner"></div>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="app-1.js"></script>
+</body>
+</html>
