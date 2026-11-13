@@ -20,6 +20,8 @@
 
 🌐 [Run demo](https://luxurymart1.vercel.app)
 
+<img width="1760" height="1069" alt="Desktop - 1" src="https://github.com/user-attachments/assets/0dba9ffd-6f2c-44d5-af8a-bfa3a4dedc8c" />
+
 ## ✨ Features
 
 - **Fully Responsive Layout:** Maximum compatibility across mobile phones, tablets, and desktop screens.
